@@ -113,25 +113,13 @@ public class Game
         }
 
         String commandWord = command.getCommandWord();
-        switch(commandWord){
-            case "help":
-                printHelp();
-            break;
-            case "go":
-                 goRoom(command);
-            break;
-            case "quit":
-                 wantToQuit = quit(command);
-            break;
-        }
-
-        /*if (commandWord.equals("help"))
-            printHelp();
-        else if (commandWord.equals("go"))
-            goRoom(command);
-        else if (commandWord.equals("quit"))
-            wantToQuit = quit(command);
-        */
+        if(commandWord.equals("help")){
+		printHelp();
+	}else if (commandWord.equals("go")){
+		goRoom(command);
+	}else if (commandWord.equals("quit")){
+		wantToQuit = quit(command);
+	}
         return wantToQuit;
     }
 
@@ -142,13 +130,14 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
+    private void printHelp()
     {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        CommandWords.showAll();
+	//System.out.println("   go quit help");
     }
 
     /** 
